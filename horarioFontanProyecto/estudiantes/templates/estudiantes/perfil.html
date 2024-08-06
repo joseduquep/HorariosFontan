@@ -1,16 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudiante</title>
-</head>
-<body>
-    <h1>Este es el perfil de Pedri</h1>
-    <ul>
-        <li>Pedro</li>
-        <li>Saldarriaga</li>
-        <li>20 cm</li>
-    </ul>
-</body>
-</html>
+{% extends "C:\Users\salds\OneDrive\Documentos\HorariosFontan\HorariosFontan\horarioFontanProyecto\templates\base.html" %}
+
+
+{% block content %}
+<div class="space">
+    <div class="row extremos">
+        <div class="col-md-3">
+            <div class="card" style="width: 100%;">
+                <img src="images/DSC_1379.jpg" class="card-img-top" alt="Estudiante Image">
+            </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+            <h1>Pedro Saldarriaga</h2>
+        </div>
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
+            <h2>Taller A</h2>
+        </div>
+        <div class="col-md-2 d-flex align-items-center justify-content-end">
+            <h2>1000163149</h2>
+        </div>
+    </div>
+
+    <div class="row mt-4" style="width: 100%;">
+        <div class="col-md-12">
+            <div class="card" style="height: 600px;">
+                <div class="card-body">
+                    <h4>Horario</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-7"></div>
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
+            <button class="btn btn-custom">Añadir estudiante</button>
+        </div>
+        <div class="col-md-2 d-flex align-items-center justify-content-end">
+            <button class="btn btn-danger">Eliminar estudiante</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
