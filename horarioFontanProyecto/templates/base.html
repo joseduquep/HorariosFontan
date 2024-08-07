@@ -67,19 +67,27 @@
   margin-top: 72px;
 }
 
+.space2x{
+  margin-top: 144px;
+}
+
 .space-left{
   margin-left: 50px;
 }
 
 
-
+.container-principal{
+  max-width: 90%; /* O un valor específico que desees */
+  padding-left: 2rem;  /* Ajusta los valores según tus necesidades */
+  padding-right: 2rem;
+}
 </style>
 
   </head>
   <body>
     {% include 'navbar.html' %}
 
-    <div class="container">
+    <div class="container container-principal">
       {% block content %}
       {% endblock%}
     </div>
