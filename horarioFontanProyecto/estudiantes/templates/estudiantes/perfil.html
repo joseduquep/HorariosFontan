@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block content %}
 <div class="space2x">
     <div class="row extremos">
         <div class="col-md-3">
             <div class="card" style="width: 100%;">
-                <img src="images/DSC_1379.jpg" class="card-img-top" alt="Estudiante Image">
+                <img src="{% static 'images/images.jpg' %}" class="card-img-top" alt="Estudiante Image">
             </div>
         </div>
         <div class="col-md-4 d-flex align-items-center">
