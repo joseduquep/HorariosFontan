@@ -4,5 +4,6 @@ from . import views
 # estudiantes/..
 
 urlpatterns = [
-    path('', views.vista_estudiante, name='pagina-estudiantes')
+    path('perfil/', views.vista_perfil, name='pagina-estudiantes'),
+    path('', views.vista_estudiantes, name='estudiantes')
 ]
