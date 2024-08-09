@@ -33,7 +33,7 @@
 }
 
 .vertical-navbar ul li {
-  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 
@@ -91,6 +91,17 @@
     {% include 'navbar.html' %}
 
     <div class="container container-principal">
+      <br/>
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible fade show space" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+
+        {% endfor %}
+      {% endif %}
       {% block content %}
       {% endblock%}
     </div>

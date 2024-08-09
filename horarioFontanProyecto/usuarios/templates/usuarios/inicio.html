@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-md-6 offset-md-3 space">
+  <h1>Iniciar Sesión</h1>
+  <br/>
+  
+  <form method="POST" action="{% url 'vista_estudiantes' %}">
+    {% csrf_token %}
+  
+    <div class="mb-3">
+      <input type="text" class="form-control" name="correo", placeholder="correo" required>
+      
+    </div><br/>
+    <div class="mb-3">
+      <input type="password" class="form-control" name="password", placeholder="Contraseña" required>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-secondary">Iniciar</button>
+  
+  </form>
+</div>
+
+{% endblock %}
