@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 
 def vista_principal(request):
-    return HttpResponse("ESTA ES LA VISTA PRINCIPAL")
+    return render(request, 'index.html')

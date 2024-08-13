@@ -1,0 +1,77 @@
+/* Estilos básicos para el body y el html */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Estilo para el header */
+header {
+    background-color: #007bff; /* Color azul principal */
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #0056b3; /* Color del botón */
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #004080; /* Color del botón en hover */
+}
+
+/* Estilo para el mensaje de bienvenida */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px); /* Ajuste para el header fijo */
+    text-align: center;
+    padding: 20px;
+}
+
+.welcome-message h1 {
+    font-size: 3rem;
+    color: #007bff; /* Color del texto de bienvenida */
+    margin: 0;
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0 0;
+}
+
+/* Estilo para el footer */
+footer {
+    background-color: #007bff; /* Color azul principal */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
