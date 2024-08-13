@@ -3,7 +3,7 @@ from . import views
 
 
 # usuarios/..
-
+app_name= 'usuarios'
 
 urlpatterns = [
     path('', views.inicio, name='vista_inicio'),
