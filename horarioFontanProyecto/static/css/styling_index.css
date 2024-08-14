@@ -1,4 +1,6 @@
-/* Estilos básicos para el body y el html */
+h1{
+    color: blue
+}
 html, body {
     margin: 0;
     padding: 0;
