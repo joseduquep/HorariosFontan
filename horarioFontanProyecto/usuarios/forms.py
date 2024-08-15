@@ -17,17 +17,29 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('email', 'password1', 'password2')
+        fields = ('username', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
+
+        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['placeholder'] = 'Nombre de usuario'
+        self.fields['username'].label = ''
+        self.fields['username'].help_text = mark_safe(
+            '<span class="form-text text-muted"><small>Requerido. 150 caracteres o menos. Solo letras, números y @/./+/-/_</small></span>'
+        )
+
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['placeholder'] = 'Correo electrónico'
+        self.fields['email'].label = ''
+        self.fields['email'].help_text = mark_safe('<span class="form-text text-muted"><small>Debe ser un correo que termine en @colegiofontan.edu.co.</small></span>')
 
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 'Contraseña'
         self.fields['password1'].label = ''
         self.fields['password1'].help_text = mark_safe(
             '<ul class="form-text text-muted small">'
-            '<li>Tu contraseña no puede ser muy parecida a tu correo.</li>'
+            '<li>Tu contraseña no puede ser muy parecida a tu nombre de usuario.</li>'
             '<li>Tu contraseña debe tener al menos 8 caracteres.</li>'
             '<li>Tu contraseña no puede ser una contraseña comúnmente usada.</li>'
             '<li>Tu contraseña no puede consistir únicamente en números.</li>'

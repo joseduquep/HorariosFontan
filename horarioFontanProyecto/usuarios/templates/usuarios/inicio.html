@@ -1,3 +1,5 @@
+
+
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
@@ -6,19 +8,15 @@
   <h1>Iniciar Sesión</h1>
   <br/>
   
-  <form method="POST" action="{% url 'vista_estudiantes' %}">
+  <form method="POST" action="/usuarios/">
     {% csrf_token %}
-  
     <div class="mb-3">
-      <input type="text" class="form-control" name="correo", placeholder="correo" required>
-      
-    </div><br/>
-    <div class="mb-3">
-      <input type="password" class="form-control" name="password", placeholder="Contraseña" required>
+        <input type="text" class="form-control" name="username" placeholder="Nombre de usuario" required>
     </div>
-    <br/>
-    <button type="submit" class="btn btn-secondary">Iniciar</button>
-  
+    <div class="mb-3">
+        <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+    </div>
+    <button type="submit" class="btn btn-secondary">Iniciar sesión</button>
   </form>
 </div>
 
