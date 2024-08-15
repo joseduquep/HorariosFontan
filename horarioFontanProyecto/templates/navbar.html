@@ -10,30 +10,32 @@
         <li class="nav-item me-3">
           <a class="nav-link me-3">Tutores</a>
         </li>
-
         <li class="nav-item me-3">
           <a class="nav-link me-3">Cerrar Sesión</a>
         </li>
-
         <li class="nav-item me-3">
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="query">
             <button class="btn btn-outline-light" type="submit">Buscar</button>
           </form>
         </li>
-      </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item me-3">
-          <a class="nav-link me-3 space-left"><i class="fas fa-user fa-4x"></i></a>
+          <a class="nav-link me-3 space-left" href="{% url 'usuarios:perfil_modificar' %}">
+            <i class="fas fa-user fa-4x"></i>
+          </a>
         </li>
       </ul>
       {% else %}
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-1">
         <li class="nav-item me-3">
-          <a class="nav-link me-3">Tutores</a>
+          <a class="nav-link me-3">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link me-3" href="{% url 'usuarios:vista_registro_usuario' %}">Registrarse</a>
         </li>
       </ul>
       {% endif %}
     </div>
+    
   </div>
 </nav>

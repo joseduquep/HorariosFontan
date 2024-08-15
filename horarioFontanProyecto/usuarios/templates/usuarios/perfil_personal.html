@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Perfil</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_perfil_personal.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Modificar Datos del Perfil</h1>
+        <form method="post" action="{% url 'usuarios:perfil_modificar' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_nombre">Nombre:</label>
+                <input type="text" id="id_nombre" name="nombre" value="{{ user.first_name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_apellido">Apellido:</label>
+                <input type="text" id="id_apellido" name="apellido" value="{{ user.last_name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_email">Correo Electrónico:</label>
+                <input type="email" id="id_email" name="email" value="{{ user.email }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_username">Nombre de Usuario:</label>
+                <input type="text" id="id_username" name="username" value="{{ user.username }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_password">Contraseña:</label>
+                <input type="password" id="id_password" name="password">
+            </div>
+
+            <div class="form-group">
+                <label for="id_password2">Confirmar Contraseña:</label>
+                <input type="password" id="id_password2" name="password2">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
+</body>
+</html>
