@@ -39,3 +39,23 @@ def logout_user(request):
 	logout(request)
 	messages.success(request, "Cerraste sesion correctamente...")
 	return render(request, 'usuarios/inicio.html')
+
+def perfil_modificar(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST.get('nombre')
+        user.last_name = request.POST.get('apellido')
+        user.email = request.POST.get('email')
+        user.username = request.POST.get('username')
+
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        if password and password == password2:
+            user.set_password(password)
+        
+        user.save()
+        messages.success(request, '¡Perfil actualizado exitosamente!')
+        return redirect('perfil_modificar')
+
+    return render(request, 'usuarios/perfil_personal.html')
