@@ -8,4 +8,5 @@ app_name= 'usuarios'
 urlpatterns = [
     path('', views.inicio, name='vista_inicio'),
     path('registro/', views.registro_usuario, name='vista_registro_usuario'),
+    path('logout/', views.logout_user, name='logout'),
 ]

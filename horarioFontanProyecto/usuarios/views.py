@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
 
@@ -28,8 +28,14 @@ def registro_usuario(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, "¡Te registraste correctamente!")
-                return render(request, 'usuarios/inicio.html')
+                return render(request, 'estudiantes/home.html')
     else:
         form = SignUpForm()
 
     return render(request, 'usuarios/registro.html', {'form': form})
+
+
+def logout_user(request):
+	logout(request)
+	messages.success(request, "Cerraste sesion correctamente...")
+	return render(request, 'usuarios/inicio.html')
