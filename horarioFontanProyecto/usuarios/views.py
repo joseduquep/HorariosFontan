@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import SignUpForm
 
 def inicio(request):
+    logout(request)
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -18,6 +19,7 @@ def inicio(request):
         return render(request, 'usuarios/inicio.html')
 
 def registro_usuario(request):
+    logout(request)
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():

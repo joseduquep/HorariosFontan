@@ -78,12 +78,68 @@
   margin-left: 50px;
 }
 
+.space-left2x{
+  margin-left:110px;
+}
+
 
 .container-principal{
   max-width: 90%; /* O un valor específico que desees */
   padding-left: 2rem;  /* Ajusta los valores según tus necesidades */
   padding-right: 2rem;
 }
+
+.custom-toggle-btn.active {
+  background-color: #1C5471;
+  color: #ffffff;
+  border-color: #1C5471;
+}
+.custom-toggle-btn.inactive {
+  background-color: #ffffff;
+  color: #1C5471;
+  border-color: #1C5471;
+}
+.custom-toggle-btn {
+  border-radius: 5px;
+  border-width: 2px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.btn-custom-modify {
+  background-color: #1C5471;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.btn-custom-modify:hover {
+  background-color: #163E59;
+  transform: scale(1.05);
+  color: #f4f4f4;
+}
+
+
+.profile-image-container {
+        width: 100%; /* Asegura que el contenedor ocupe todo el ancho del padre */
+        max-width: 230px; /* Establece un ancho máximo para el contenedor */
+        height: 300px; /* Define la altura fija para mantener la imagen vertical */
+        overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px; /* Añade bordes redondeados si lo deseas */
+    }
+
+    .profile-image-container img {
+        width: auto; /* Permite que el ancho se ajuste automáticamente */
+        height: 100%; /* Asegura que la imagen ocupe toda la altura del contenedor */
+        object-fit: cover; /* Asegura que la imagen cubra todo el área del contenedor, recortando si es necesario */
+    }
+
+
 </style>
 
   </head>

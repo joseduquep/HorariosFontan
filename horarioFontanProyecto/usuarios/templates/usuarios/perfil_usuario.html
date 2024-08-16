@@ -3,25 +3,31 @@
 
 {% block content %}
 <div class="space2x">
-    <div class="row extremos">
-        <div class="col-md-3">
-            <div class="card" style="width: 100%;">
-                <img src="{% static 'images/images.jpg' %}" class="card-img-top" alt="Estudiante Image">
-            </div>
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="profile-image-container space-left2x">
+            <img src="{% static 'images/images.jpg' %}" class="card-img-top" alt="Estudiante Image">
         </div>
-        <div class="col-md-4 d-flex align-items-center">
-            <h1>{{ user.first_name}}</h1>
-        </div>
-        <div class="col-md-2 d-flex align-items-center justify-content-center">
-            <h2>Taller A</h2>
+      </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h1 class="display-4">{{ user.first_name }} {{ user.last_name }}</h1>
+            <h2 class="text-muted">Taller A</h2>
         </div>
     </div>
 
-    <div class="row mt-4" style="width: 100%;">
+    <div class="row mb-4">
         <div class="col-md-12">
-            <div class="card" style="height: 600px;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>.</h4>
+                <div class="btn-group" role="group" aria-label="Toggle Schedule">
+                    <button type="button" class="btn custom-toggle-btn" id="main-schedule-btn">Horario Principal</button>
+                    <button type="button" class="btn custom-toggle-btn" id="recess-schedule-btn">Horario de descanso</button>
+                </div>
+            </div>
+            <div class="card" style="height: 600px;" id="schedule-container">
                 <div class="card-body">
-                    <h4>Horario</h4>
+                    <p id="main-schedule-content">Aquí va el contenido del horario principal.</p>
+                    <p id="recess-schedule-content" style="display: none;">Aquí va el contenido del horario de recreos.</p>
                 </div>
             </div>
         </div>
@@ -30,7 +36,7 @@
     <div class="row mt-4">
         <div class="col-md-7"></div>
         <div class="col-md-5 d-flex align-items-center justify-content-center">
-            <a class="btn btn-custom" href="{% url 'usuarios:perfil_modificar' %}">Modificar perfil</button>
+            <a class="btn btn-lg btn-custom-modify" href="{% url 'usuarios:perfil_modificar' %}">Modificar perfil</a>
         </div>
     </div>
     <br><br><br>
@@ -38,4 +44,21 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#main-schedule-btn').click(function() {
+            $('#main-schedule-content').show();
+            $('#recess-schedule-content').hide();
+            $('#main-schedule-btn').addClass('active').removeClass('inactive');
+            $('#recess-schedule-btn').addClass('inactive').removeClass('active');
+        });
+
+        $('#recess-schedule-btn').click(function() {
+            $('#main-schedule-content').hide();
+            $('#recess-schedule-content').show();
+            $('#main-schedule-btn').addClass('inactive').removeClass('active');
+            $('#recess-schedule-btn').addClass('active').removeClass('inactive');
+        });
+    });
+</script>
 {% endblock %}
