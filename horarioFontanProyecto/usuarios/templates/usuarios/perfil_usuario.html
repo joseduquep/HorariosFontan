@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="space2x">
+    <div class="row extremos">
+        <div class="col-md-3">
+            <div class="card" style="width: 100%;">
+                <img src="{% static 'images/images.jpg' %}" class="card-img-top" alt="Estudiante Image">
+            </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+            <h1>{{ user.first_name}}</h1>
+        </div>
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
+            <h2>Taller A</h2>
+        </div>
+    </div>
+
+    <div class="row mt-4" style="width: 100%;">
+        <div class="col-md-12">
+            <div class="card" style="height: 600px;">
+                <div class="card-body">
+                    <h4>Horario</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-7"></div>
+        <div class="col-md-5 d-flex align-items-center justify-content-center">
+            <a class="btn btn-custom" href="{% url 'usuarios:perfil_modificar' %}">Modificar perfil</button>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

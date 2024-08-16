@@ -40,6 +40,10 @@ def logout_user(request):
 	messages.success(request, "Cerraste sesion correctamente...")
 	return render(request, 'usuarios/inicio.html')
 
+
+def perfil_usuario(request):
+    return render(request, 'usuarios/perfil_usuario.html/')
+
 def perfil_modificar(request):
     if request.method == 'POST':
         user = request.user
@@ -56,6 +60,6 @@ def perfil_modificar(request):
         
         user.save()
         messages.success(request, '¡Perfil actualizado exitosamente!')
-        return redirect('perfil_modificar')
+        return render(request, 'usuarios/perfil_usuario.html')
 
-    return render(request, 'usuarios/perfil_personal.html')
+    return render(request, 'usuarios/perfil_modificar.html')
