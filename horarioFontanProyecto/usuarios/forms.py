@@ -61,9 +61,9 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].help_text = mark_safe('<span class="form-text text-muted"><small>Ingresa la misma contraseña de antes, para confirmar.</small></span>')
 
         self.fields['invitation_code'].widget.attrs['class'] = 'form-control'
-        self.fields['invitation_code'].widget.attrs['placeholder'] = 'Confirma contraseña'
+        self.fields['invitation_code'].widget.attrs['placeholder'] = 'Ingrese codigo de verificacion'
         self.fields['invitation_code'].label = ''
-        self.fields['invitation_code'].help_text = mark_safe('<span class="form-text text-muted"><small>Ingresa la misma contraseña de antes, para confirmar.</small></span>')
+        self.fields['invitation_code'].help_text = mark_safe('<span class="form-text text-muted"><small></small></span>')
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
