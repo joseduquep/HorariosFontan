@@ -22,3 +22,10 @@ def num_alumno_vista(request, num_alumno):
     alumno_lista = list(alumnos.values()) # ['Nico', 'Pedro', ...]
     alumno = alumno_lista[num_alumno]
     return HttpResponseRedirect(alumno)
+
+
+#CUANDO YA ESTEN CREADO EL MODELO DE TALLER Y DE ESTUDIANTES, PARA QUE CADA TALLER REDIRIJA HACIA EL ADECUADO
+#def estudiantes_por_taller(request, taller_id):
+#    taller = Taller.objects.get(nombre=taller_id)
+#   estudiantes = Estudiante.objects.filter(taller=taller)
+#  return render(request, 'home.html', {'taller': taller, 'Estudiante': estudiantes})

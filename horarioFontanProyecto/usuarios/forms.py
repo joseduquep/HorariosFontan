@@ -15,9 +15,18 @@ class SignUpForm(UserCreationForm):
         help_text=mark_safe('<span class="form-text text-muted"><small>Debe ser un correo que termine en @colegiofontan.edu.co.</small></span>')
     )
 
+    invitation_code = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Código de invitación',
+        }),
+        label='',
+    )
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ('username', 'email', 'password1', 'password2','invitation_code')
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
@@ -51,8 +60,20 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = mark_safe('<span class="form-text text-muted"><small>Ingresa la misma contraseña de antes, para confirmar.</small></span>')
 
+        self.fields['invitation_code'].widget.attrs['class'] = 'form-control'
+        self.fields['invitation_code'].widget.attrs['placeholder'] = 'Confirma contraseña'
+        self.fields['invitation_code'].label = ''
+        self.fields['invitation_code'].help_text = mark_safe('<span class="form-text text-muted"><small>Ingresa la misma contraseña de antes, para confirmar.</small></span>')
+
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if not email.endswith('@colegiofontan.edu.co'):
             raise ValidationError('El correo electrónico debe terminar en @colegiofontan.edu.co')
         return email
+    
+    def clean_invitation_code(self):
+        code = self.cleaned_data.get('invitation_code')
+        valid_codes = ['J3n@9Fq$LbZ2']  # Ejemplo de códigos válidos
+        if code not in valid_codes:
+            raise ValidationError('El código de invitación no es válido.')
+        return code

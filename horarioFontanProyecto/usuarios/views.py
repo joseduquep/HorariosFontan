@@ -29,12 +29,13 @@ def registro_usuario(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, "¡Te registraste correctamente!")
                 return render(request, 'estudiantes/home.html')
     else:
         form = SignUpForm()
 
     return render(request, 'usuarios/registro.html', {'form': form})
+
+
 
 
 def logout_user(request):
