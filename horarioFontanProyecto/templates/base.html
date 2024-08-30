@@ -112,26 +112,17 @@
   object-fit: cover; 
 }
 
+
+
 </style>
 
   </head>
   <body>
     {% include 'navbar.html' %}
 
-    <div class="vertical-navbar">
-      <div class="scroll-container">
-        <ul>
-          {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-          <li class="nav-item">
-            <a class="nav-link">Taller {{ letter }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-
-    <div class="container container-principal">
+    <div class="container container-principal ">
       <br/>
+      <div style="margin-top: 100px;">
       {% if messages %}
         {% for message in messages %}
           <div class="alert alert-warning alert-dismissible fade show space" role="alert">
@@ -142,7 +133,7 @@
       {% endif %}
       {% block content %}
       {% endblock %}
-    </div>
-
+      </div>
+    </div> 
   </body>
 </html>
