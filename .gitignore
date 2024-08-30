@@ -1,0 +1,32 @@
+# Ignore the database (SQLite)
+db.sqlite3
+db.json
+
+# Ignore Python compiled files
+*.pyc
+__pycache__/
+
+# Ignore environment variables file
+.env
+
+# Ignore virtual environment folder
+venv/
+env/
+
+# Ignore IDE specific folders
+.idea/
+.vscode/
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore migrations
+**/migrations/*
+
+# Ignore static and media files
+/static/
+/media/
+
+# Ignore MySQL dumps and logs (optional)
+*.sql
+*.log
