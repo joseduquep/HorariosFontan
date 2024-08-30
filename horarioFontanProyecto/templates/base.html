@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Horarios Fontan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         
@@ -20,8 +19,13 @@
   bottom: 0;
   width: 230px;
   background-color: #1C5471;
-  overflow-y: auto;
+  overflow-y: hidden; /* Cambiado a hidden para evitar doble scroll */
   z-index: 1000;
+}
+
+.vertical-navbar .scroll-container {
+  max-height: calc(100vh - 110px); /* Ajusta la altura para el scroll */
+  overflow-y: auto;
 }
 
 .vertical-navbar ul {
@@ -39,7 +43,7 @@
 .vertical-navbar ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 20px; /* Ajuste del tamaño de fuente */
+  font-size: 20px;
   padding: 15px; /* Padding uniforme */
   display: block; /* Asegura que el enlace ocupe toda el área del elemento */
 }
@@ -115,13 +119,15 @@
     {% include 'navbar.html' %}
 
     <div class="vertical-navbar">
-      <ul>
-        {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-        <li class="nav-item">
-          <a class="nav-link">Taller {{ letter }}</a>
-        </li>
-        {% endfor %}
-      </ul>
+      <div class="scroll-container">
+        <ul>
+          {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+          <li class="nav-item">
+            <a class="nav-link">Taller {{ letter }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 
     <div class="container container-principal">
@@ -135,8 +141,8 @@
         {% endfor %}
       {% endif %}
       {% block content %}
-      {% endblock%}
+      {% endblock %}
     </div>
-    
+
   </body>
 </html>
