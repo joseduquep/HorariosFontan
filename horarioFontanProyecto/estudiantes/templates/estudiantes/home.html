@@ -6,88 +6,14 @@
   <nav class="vertical-navbar">
     <div class="container">
       <ul>
+        {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
         <li class="nav-item">
-          <a class="nav-link">Taller A</a>
+          <a class="nav-link">Taller {{ letter }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link">Taller B</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller C</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller D</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller E</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Taller F</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller G</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller H</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller I</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller J</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller K</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller L</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller M</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller N</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller O</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller P</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller Q</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller R</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller S</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller T</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller U</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller V</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller W</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller X</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller Y</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Taller Z</a>
-        </li>
+        {% endfor %}
       </ul>
     </div>
   </nav>
 </div>
-
 
 {% endblock %}

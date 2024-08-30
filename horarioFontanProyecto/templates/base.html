@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Horarios Fontan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         
@@ -28,8 +28,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  display: block; /* Cambiar 'display' a 'block' para que los elementos se muestren verticalmente */
-  position: fixed;
+  display: block;
 }
 
 .vertical-navbar ul li {
@@ -40,17 +39,25 @@
 .vertical-navbar ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 25px;
-  padding-left: 60px;
-  padding-right: 60px;
+  font-size: 20px; /* Ajuste del tamaño de fuente */
+  padding: 15px; /* Padding uniforme */
+  display: block; /* Asegura que el enlace ocupe toda el área del elemento */
 }
 
 .vertical-navbar ul li a:hover {
   background-color: #064463;
+  border-radius: 5px; /* Añade un borde redondeado al hover */
 }
 
 .container {
-  padding-top: 50px; /* Ajusta según la altura de la barra de navegación */
+  padding-top: 60px; /* Ajusta según la altura de la barra de navegación */
+}
+
+.container-principal {
+  max-width: 90%; 
+  padding-left: 2rem;  
+  padding-right: 2rem;
+  margin-left: 250px; /* Añade margen para evitar superposición con la barra lateral */
 }
 
 .btn-custom {
@@ -66,44 +73,6 @@
     color: white;
 }
 
-.space{
-  margin-top: 72px;
-}
-
-.space2x{
-  margin-top: 144px;
-}
-
-.space-left{
-  margin-left: 50px;
-}
-
-.space-left2x{
-  margin-left:110px;
-}
-
-
-.container-principal{
-  max-width: 90%; /* O un valor específico que desees */
-  padding-left: 2rem;  /* Ajusta los valores según tus necesidades */
-  padding-right: 2rem;
-}
-
-.custom-toggle-btn.active {
-  background-color: #1C5471;
-  color: #ffffff;
-  border-color: #1C5471;
-}
-.custom-toggle-btn.inactive {
-  background-color: #ffffff;
-  color: #1C5471;
-  border-color: #1C5471;
-}
-.custom-toggle-btn {
-  border-radius: 5px;
-  border-width: 2px;
-  transition: background-color 0.3s, color 0.3s;
-}
 .btn-custom-modify {
   background-color: #1C5471;
   color: #ffffff;
@@ -115,36 +84,45 @@
   text-transform: uppercase;
   transition: background-color 0.3s, transform 0.3s;
 }
+
 .btn-custom-modify:hover {
   background-color: #163E59;
   transform: scale(1.05);
   color: #f4f4f4;
 }
 
-
 .profile-image-container {
-        width: 100%; /* Asegura que el contenedor ocupe todo el ancho del padre */
-        max-width: 230px; /* Establece un ancho máximo para el contenedor */
-        height: 300px; /* Define la altura fija para mantener la imagen vertical */
-        overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 8px; /* Añade bordes redondeados si lo deseas */
-    }
+  width: 100%; 
+  max-width: 230px; 
+  height: 300px; 
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px; 
+}
 
-    .profile-image-container img {
-        width: auto; /* Permite que el ancho se ajuste automáticamente */
-        height: 100%; /* Asegura que la imagen ocupe toda la altura del contenedor */
-        object-fit: cover; /* Asegura que la imagen cubra todo el área del contenedor, recortando si es necesario */
-    }
-
+.profile-image-container img {
+  width: auto; 
+  height: 100%; 
+  object-fit: cover; 
+}
 
 </style>
 
   </head>
   <body>
     {% include 'navbar.html' %}
+
+    <div class="vertical-navbar">
+      <ul>
+        {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+        <li class="nav-item">
+          <a class="nav-link">Taller {{ letter }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
 
     <div class="container container-principal">
       <br/>
@@ -154,14 +132,11 @@
             {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
-
-
         {% endfor %}
       {% endif %}
       {% block content %}
       {% endblock%}
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
   </body>
 </html>
