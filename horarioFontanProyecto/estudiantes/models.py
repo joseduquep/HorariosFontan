@@ -1,10 +1,22 @@
+# estudiantes/models.py
 from django.db import models
 
-# Create your models here.
+class Estudiante(models.Model):
+    nombre = models.CharField(max_length=255)
+    apellido = models.CharField(max_length=255)
+    cedula = models.IntegerField(unique=True)
+    email = models.EmailField(unique=True)
+    nivel_autonomia = models.CharField(max_length=50)
+    vacaciones_prolongadas = models.BooleanField(default=False)
+    grado = models.CharField(max_length=50)
+    taller = models.ForeignKey('horarios.Taller', on_delete=models.SET_NULL, null=True, blank=True)
+    usuario = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE, default=1)
+    tutor = models.ForeignKey('usuarios.Tutor', on_delete=models.SET_NULL, null=True, blank=True)
 
-# este es un modelo de prueba para testear la conexion con MySQL
-class TestModel(models.Model):
-    name = models.CharField(max_length=100)
+class EstudianteTaller(models.Model):
+    
+    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE, null=True)
+    taller = models.ForeignKey('horarios.Taller', on_delete=models.CASCADE, null=True, blank=True)
 
-    def __str__(self):
-        return f"El nombre asignado a este objeto es {self.name}"
+    class Meta:
+        unique_together = ('estudiante', 'taller')
