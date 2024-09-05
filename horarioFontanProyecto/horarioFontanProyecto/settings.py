@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_extensions',
     'asistencias.apps.AsistenciasConfig',
     'horarios.apps.HorariosConfig',
     'estudiantes.apps.EstudiantesConfig',
