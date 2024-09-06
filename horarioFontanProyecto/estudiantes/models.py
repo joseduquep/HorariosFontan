@@ -11,7 +11,7 @@ class Estudiante(models.Model):
     vacaciones_prolongadas = models.BooleanField(default=False)
     grado = models.CharField(max_length=50)
     taller = models.ForeignKey('horarios.Taller', on_delete=models.SET_NULL, null=True, blank=True)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    # usuario = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     tutor = models.ForeignKey('usuarios.Tutor', on_delete=models.SET_NULL, null=True, blank=True)
 
 class EstudianteTaller(models.Model):
