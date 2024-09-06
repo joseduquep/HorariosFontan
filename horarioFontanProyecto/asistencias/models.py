@@ -1,5 +1,6 @@
 # asistencias/models.py
 from django.db import models
+from django.contrib.auth.models import User
 
 class Asistencia(models.Model):
     horario = models.ForeignKey('horarios.Horario', on_delete=models.CASCADE, null=True, blank=True)
@@ -16,7 +17,7 @@ class Auditoria(models.Model):
     estudiante = models.ForeignKey('estudiantes.Estudiante', on_delete=models.CASCADE, null=True, blank=True)
     datos_anteriores = models.TextField(blank=True, null=True)
     datos_nuevos = models.TextField(blank=True, null=True)
-    usuario = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE, default=1)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     fecha = models.DateTimeField(auto_now_add=True)
     comentario = models.TextField(blank=True, null=True)
 
