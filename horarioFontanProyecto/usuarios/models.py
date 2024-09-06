@@ -14,7 +14,9 @@ from django.db import models
 #         return f"Perfil de {self.user.username}"
 
 class Tutor(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, default=1)
-    # No activar:
-    #taller = models.ForeignKey('horarios.Taller', on_delete=models.SET_NULL, null=True, blank=True)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return f"Tutor: {self.usuario.username if self.usuario else 'Sin usuario asignado'}"
+
 

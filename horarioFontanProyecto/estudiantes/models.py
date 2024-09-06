@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Estudiante(models.Model):
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
-    cedula = models.IntegerField(unique=True)
+    cedula = models.BigIntegerField(unique=True)
     email = models.EmailField(unique=True)
     nivel_autonomia = models.CharField(max_length=50)
     vacaciones_prolongadas = models.BooleanField(default=False)
