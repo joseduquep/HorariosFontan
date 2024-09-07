@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'horariosFontan',
         'USER': 'root',
-        'PASSWORD': '',  # Deja la contraseña vacía
+        'PASSWORD': 'Behetria1',  # Deja la contraseña vacía
         'HOST': 'localhost',
         'PORT': '3306',  # El puerto por defecto de MySQL/MariaDB
         'OPTIONS': {

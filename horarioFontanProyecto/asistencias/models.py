@@ -30,7 +30,7 @@ class Auditoria(models.Model):
     estudiante = models.ForeignKey('estudiantes.Estudiante', on_delete=models.CASCADE, null=True, blank=True)
     datos_anteriores = models.TextField(blank=True, null=True)
     datos_nuevos = models.TextField(blank=True, null=True)
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, default=1)
     fecha = models.DateTimeField(auto_now_add=True)
     comentario = models.TextField(blank=True, null=True)
 

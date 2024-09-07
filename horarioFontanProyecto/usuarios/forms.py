@@ -26,7 +26,7 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2','invitation_code')
+        fields = ('username', 'email', 'first_name', 'last_name' ,'password1', 'password2','invitation_code')
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
@@ -42,6 +42,17 @@ class SignUpForm(UserCreationForm):
         self.fields['email'].widget.attrs['placeholder'] = 'Correo electrónico'
         self.fields['email'].label = ''
         self.fields['email'].help_text = mark_safe('<span class="form-text text-muted"><small>Debe ser un correo que termine en @colegiofontan.edu.co.</small></span>')
+
+
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['first_name'].widget.attrs['placeholder'] = 'Nombre'
+        self.fields['first_name'].label = ''
+        self.fields['first_name'].help_text = mark_safe('')
+
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['placeholder'] = 'Apellido'
+        self.fields['last_name'].label = ''
+        self.fields['last_name'].help_text = mark_safe('')
 
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 'Contraseña'
