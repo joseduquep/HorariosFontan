@@ -17,6 +17,7 @@ class Estudiante(models.Model):
     
     
     tutor = models.ForeignKey('usuarios.Tutor', on_delete=models.SET_NULL, null=True, blank=True)
+    foto = models.ImageField(upload_to='\estudiantes\static\images', default='\estudiantes\static\images\DSC_1379.jpg', blank=True, null=True)
 
 class EstudianteTaller(models.Model):
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE, null=True)

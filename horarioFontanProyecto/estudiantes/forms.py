@@ -7,7 +7,7 @@ class EstudianteForm(forms.ModelForm):
         model = Estudiante
  
  
-        fields = ['nombre', 'apellido', 'cedula',  'nivel_autonomia', 'vacaciones_prolongadas', 'grado', 'taller']
+        fields = ['nombre', 'apellido', 'cedula',  'nivel_autonomia', 'vacaciones_prolongadas', 'grado', 'taller', 'foto', 'email']
 
 def __init__(self, *args, **kwargs):
         super(EstudianteForm, self).__init__(*args, **kwargs)
@@ -41,4 +41,9 @@ def __init__(self, *args, **kwargs):
         self.fields['grado'].widget.attrs['placeholder'] = 'Grado estudiante'
         self.fields['grado'].label = ''
         self.fields['grado'].help_text = mark_safe('')   
+
+        self.fields['foto'].widget.attrs['class'] = 'form-control'
+        self.fields['foto'].widget.attrs['placeholder'] = 'Grado estudiante'
+        self.fields['foto'].label = ''
+        self.fields['foto'].help_text = mark_safe('') 
         

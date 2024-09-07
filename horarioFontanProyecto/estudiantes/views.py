@@ -13,8 +13,14 @@ def vista_perfil(request):
 
 def vista_home(request):
     # estudiantes/templates/estudiantes/home.hmtl
-    return render(request, 'estudiantes/home.html')
+    estudiantes = Estudiante.objects.all()
+    return render(request, 'estudiantes/home.html', {'estudiante':estudiantes})
 
+
+def search(request):
+    query = request.GET.get('query')
+    estudiantes = Estudiante.objects.filter(nombre__icontains=query)
+    return render(request, 'estudiantes/home.html', {'estudiantes': estudiantes, 'query': query})
 
 alumnos = {
     "repre1": 'Nico',
@@ -38,6 +44,7 @@ def registro_estudiante(request):
             Estudiante.nivel_autonomia = form.cleaned_data['nivel_autonomia']
             Estudiante.taller = form.cleaned_data['taller']
             Estudiante.grado = form.cleaned_data['grado']
+            Estudiante.foto= form.cleaned_data['foto']
             if Estudiante is not None:
                 return render(request, 'estudiantes/home.html')
     else:
