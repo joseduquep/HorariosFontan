@@ -1,10 +1,35 @@
+# forms.py
+from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.safestring import mark_safe
 
 class SignUpForm(UserCreationForm):
+    USER_TYPE_CHOICES = [
+        ('tutor', 'Tutor'),
+        ('admin', 'Admin'),
+    ]
+    
+    user_type = forms.ChoiceField(
+        choices=USER_TYPE_CHOICES,
+        required=True,
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+            'placeholder': 'Tipo de usuario',
+        }),
+        label=''
+    )
+
+    foto = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Foto del Tutor',
+        }),
+        label='Foto del Tutor'
+    )
+
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(attrs={
@@ -26,11 +51,10 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name' ,'password1', 'password2','invitation_code')
+        fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2', 'invitation_code', 'user_type', 'foto')
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
-
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['username'].widget.attrs['placeholder'] = 'Nombre de usuario'
         self.fields['username'].label = ''
@@ -43,16 +67,13 @@ class SignUpForm(UserCreationForm):
         self.fields['email'].label = ''
         self.fields['email'].help_text = mark_safe('<span class="form-text text-muted"><small>Debe ser un correo que termine en @colegiofontan.edu.co.</small></span>')
 
-
         self.fields['first_name'].widget.attrs['class'] = 'form-control'
         self.fields['first_name'].widget.attrs['placeholder'] = 'Nombre'
         self.fields['first_name'].label = ''
-        self.fields['first_name'].help_text = mark_safe('')
 
         self.fields['last_name'].widget.attrs['class'] = 'form-control'
         self.fields['last_name'].widget.attrs['placeholder'] = 'Apellido'
         self.fields['last_name'].label = ''
-        self.fields['last_name'].help_text = mark_safe('')
 
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 'Contraseña'
@@ -72,16 +93,15 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].help_text = mark_safe('<span class="form-text text-muted"><small>Ingresa la misma contraseña de antes, para confirmar.</small></span>')
 
         self.fields['invitation_code'].widget.attrs['class'] = 'form-control'
-        self.fields['invitation_code'].widget.attrs['placeholder'] = 'Ingrese codigo de verificacion'
+        self.fields['invitation_code'].widget.attrs['placeholder'] = 'Ingrese código de verificación'
         self.fields['invitation_code'].label = ''
-        self.fields['invitation_code'].help_text = mark_safe('<span class="form-text text-muted"><small></small></span>')
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if not email.endswith('@colegiofontan.edu.co'):
             raise ValidationError('El correo electrónico debe terminar en @colegiofontan.edu.co')
         return email
-    
+
     def clean_invitation_code(self):
         code = self.cleaned_data.get('invitation_code')
         valid_codes = ['J3n@9Fq$LbZ2']  # Ejemplo de códigos válidos

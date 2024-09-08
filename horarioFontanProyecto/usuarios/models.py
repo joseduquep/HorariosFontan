@@ -1,7 +1,23 @@
 # usuarios/models.py
 from django.contrib.auth.models import User
 from django.db import models
-    
+import os
+
+# Cambiar el path para usar 'media/images'
+def user_directory_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f"{instance.usuario.username}.{ext}"
+    return os.path.join('images', filename)  # Archivos serán guardados en 'media/images'
+
+class Tutor(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    foto = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
+
+    def __str__(self):
+        return f"Tutor: {self.usuario.username if self.usuario else 'Sin usuario asignado'}"
+
+
+
 # usuarios/models.py
 
 # class Usuario(models.Model):
@@ -12,11 +28,3 @@ from django.db import models
 
 #     def __str__(self):
 #         return f"Perfil de {self.user.username}"
-
-class Tutor(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-
-    def __str__(self):
-        return f"Tutor: {self.usuario.username if self.usuario else 'Sin usuario asignado'}"
-
-

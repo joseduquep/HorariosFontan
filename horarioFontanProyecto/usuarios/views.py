@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
+from .models import Tutor
+
 
 def inicio(request):
     logout(request)
@@ -21,14 +23,19 @@ def inicio(request):
 def registro_usuario(request):
     logout(request)
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = SignUpForm(request.POST, request.FILES)  
         if form.is_valid():
-            user = form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            user = authenticate(username=username, password=password)
+            user = form.save(commit=False)  # No guardar aún
+            user.set_password(form.cleaned_data['password1'])
+            user.save()  # Ahora guardar el usuario
+            user_type = form.cleaned_data['user_type']
+            
+            if user_type == 'tutor':
+                Tutor.objects.create(
+                    usuario=user,
+                    foto=form.cleaned_data.get('foto')
+                )
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
             if user is not None:
                 login(request, user)
                 return render(request, 'estudiantes/home.html')
@@ -47,7 +54,8 @@ def logout_user(request):
 
 
 def perfil_usuario(request):
-    return render(request, 'usuarios/perfil_usuario.html/')
+    tutor = Tutor.objects.get(usuario=request.user)
+    return render(request, 'usuarios/perfil_usuario.html/', {'tutor': tutor})
 
 def perfil_modificar(request):
     if request.method == 'POST':
