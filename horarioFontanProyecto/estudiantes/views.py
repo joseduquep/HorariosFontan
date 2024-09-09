@@ -13,7 +13,7 @@ def vista_perfil(request):
 
 def vista_home(request):
     # estudiantes/templates/estudiantes/home.hmtl
-    query = not query
+    #query = not query
     estudiantes = Estudiante.objects.all()
     return render(request, 'estudiantes/home.html', {'estudiante':estudiantes})
 
