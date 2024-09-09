@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from .models import Estudiante
 from .forms import EstudianteForm
 from django.urls import reverse_lazy
@@ -29,10 +29,14 @@ alumnos = {
     "repre3": "Jose"
 }
 
-def num_alumno_vista(request, num_alumno):
-    alumno_lista = list(alumnos.values()) # ['Nico', 'Pedro', ...]
-    alumno = alumno_lista[num_alumno]
-    return HttpResponseRedirect(alumno)
+def detalle_perfil(request, estudiante_id):
+    try:
+        estudiante = get_object_or_404(Estudiante, id=estudiante_id)
+        return render(request, 'estudiantes/perfil.html', {'estudiante': estudiante})
+    except:
+        resultado = 'No se encuentra informacion de este estudiante'
+        return HttpResponseNotFound(resultado)
+
 
 def registro_estudiante(request):
     if request.method == 'POST':
