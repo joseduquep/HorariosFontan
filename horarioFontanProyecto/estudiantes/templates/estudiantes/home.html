@@ -26,7 +26,7 @@
                           <img src="{% static 'images/DSC_1379.jpg' %}" class="card-img-top" alt="Imagen del estudiante">
                           <div class="card-body">
                               <h5 class="card-title">
-                                  <a href="{% url 'estudiantes:detalle_perfil' estudiante.id %}" target="_blank">
+                                  <a href="{% url 'estudiantes:detalle_perfil' estudiante.id %}">
                                       {{ estudiante.nombre }} {{ estudiante.apellido }}
                                   </a>
                               </h5>

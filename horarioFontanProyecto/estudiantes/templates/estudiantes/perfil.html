@@ -6,10 +6,23 @@
     <div class="row mb-4">
         <div class="col-md-3">
             <div class="profile-image-container space-left2x">
-                <img src="{{ estudiante.foto.url }}" class="card-img-top" alt="Imagen del estudiante">
+                <img src="{{ estudiante.foto2.url }}" class="card-img-top" alt="Imagen del estudiante">
             </div>
         </div>
 
+        <div class="container-fluid">
+            <nav class="vertical-navbar" style="height: 100vh; overflow-y: auto;">
+              <div class="container">
+                <ul>
+                  {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+                  <li class="nav-item">
+                    <a class="nav-link">Taller {{ letter }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </nav>
+          </div> 
 
         <div class="container">
             <h1>Detalles del Estudiante</h1>

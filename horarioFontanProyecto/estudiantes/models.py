@@ -13,7 +13,10 @@ class Estudiante(models.Model):
     taller = models.ForeignKey('horarios.Taller', on_delete=models.SET_NULL, null=True, blank=True)
     #usuario = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     tutor = models.ForeignKey('usuarios.Tutor', on_delete=models.SET_NULL, null=True, blank=True)
-    foto = models.ImageField(upload_to='\estudiantes\static\images', default='\estudiantes\static\images\DSC_1379.jpg', blank=True, null=True)
+    tutor = models.ForeignKey('usuarios.Tutor', on_delete=models.SET_NULL, null=True, blank=True)
+    foto = models.ImageField(upload_to='estudiantes/images', default='estudiantes/images/DSC_137999.jpg', blank=True, null=True)
+    foto2 = models.ImageField(upload_to='estudiantes/images', default='estudiantes/images/DSC_137999.jpg', blank=True, null=True)
+
 
 class EstudianteTaller(models.Model):
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE, null=True)
