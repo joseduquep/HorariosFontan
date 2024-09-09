@@ -23,11 +23,11 @@ def search(request):
     estudiantes = Estudiante.objects.filter(nombre__icontains=query)
     return render(request, 'estudiantes/home.html', {'estudiantes': estudiantes, 'query': query})
 
-alumnos = {
-    "repre1": 'Nico',
-    "repre2": "Pedro",
-    "repre3": "Jose"
-}
+# alumnos = {
+#     "repre1": 'Nico',
+#     "repre2": "Pedro",
+#     "repre3": "Jose"
+# }
 
 def detalle_perfil(request, estudiante_id):
     try:
