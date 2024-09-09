@@ -11,11 +11,11 @@ class Estudiante(models.Model):
     vacaciones_prolongadas = models.BooleanField(default=False)
     grado = models.CharField(max_length=50)
     taller = models.ForeignKey('horarios.Taller', on_delete=models.SET_NULL, null=True, blank=True)
+    #usuario = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     tutor = models.ForeignKey('usuarios.Tutor', on_delete=models.SET_NULL, null=True, blank=True)
-    # usuario = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    foto = models.ImageField(upload_to='\estudiantes\static\images', default='\estudiantes\static\images\DSC_1379.jpg', blank=True, null=True)
 
 class EstudianteTaller(models.Model):
-    
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE, null=True)
     taller = models.ForeignKey('horarios.Taller', on_delete=models.CASCADE, null=True, blank=True)
 

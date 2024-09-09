@@ -6,7 +6,11 @@
     <div class="row mb-4">
       <div class="col-md-3">
         <div class="profile-image-container space-left2x">
-            <img src="{% static 'images/images.jpg' %}" class="card-img-top" alt="Estudiante Image">
+            {% if tutor.foto %}
+                <img src="{{ tutor.foto.url }}" alt="Foto de {{ tutor.usuario.username }}" class="profile-image">
+            {% else %}
+                <img src="{% static 'images/DSC_1379.jpg' %}" class="card-img-top" alt="Estudiante Image">
+            {% endif %}
         </div>
       </div>
         <div class="col-md-6 d-flex flex-column justify-content-center">
