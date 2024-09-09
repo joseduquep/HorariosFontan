@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from django.db import models
     
 # usuarios/models.py
+class Tutor(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return f"Tutor: {self.usuario.username if self.usuario else 'Sin usuario asignado'}"
+
 
 # class Usuario(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -13,10 +19,5 @@ from django.db import models
 #     def __str__(self):
 #         return f"Perfil de {self.user.username}"
 
-class Tutor(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-
-    def __str__(self):
-        return f"Tutor: {self.usuario.username if self.usuario else 'Sin usuario asignado'}"
 
 
